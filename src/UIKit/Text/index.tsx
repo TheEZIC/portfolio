@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren} from 'react';
+import React, {createElement, FC, PropsWithChildren} from 'react';
 import {Size} from "../../types/Size";
 import {combineStyles} from "../../utils/combineStyles";
 import styles from "./index.module.scss";
@@ -21,7 +21,7 @@ const Text: FC<TextProps> = ({
   className,
   style,
   children,
-  s= "sm",
+  s = "sm",
   as = "span",
   ...rest
 }) => {
@@ -31,38 +31,11 @@ const Text: FC<TextProps> = ({
     fontSize: getTextSize(s),
   };
 
-  switch (as) {
-    case "p":
-      return (
-        <p
-          className={classString}
-          style={style}
-          {...rest as React.HTMLProps<HTMLParagraphElement>}
-        >
-          {children}
-        </p>
-      );
-    case "span":
-      return (
-        <span
-          className={classString}
-          style={style}
-          {...rest as React.HTMLProps<HTMLSpanElement>}
-        >
-          {children}
-        </span>
-      );
-    case "b":
-      return (
-        <b
-          className={classString}
-          style={style}
-          {...rest as React.HTMLProps<HTMLSpanElement>}
-        >
-          {children}
-        </b>
-      );
-  }
+  return createElement(as, {
+    className: classString,
+    style,
+    ...rest,
+  }, children);
 };
 
 export default Text;
