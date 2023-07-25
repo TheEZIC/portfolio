@@ -1,0 +1,46 @@
+@import "src/styles";
+
+.card {
+  position: relative;
+
+  padding: 24px 22px;
+
+  border: 1px solid $card-border;
+  border-radius: 20px;
+
+  background-color: $card-background;
+
+  overflow: hidden;
+
+  & > * {
+    z-index: 3;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    content: "";
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(
+      800px circle at var(--glow-x) var(--glow-y),
+      $card-glow,
+      transparent 40%
+    );
+
+    pointer-events: none;
+    opacity: 0;
+    z-index: 2;
+
+    filter: blur(2px);
+
+    transition: opacity ease-in-out 0.15s;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}

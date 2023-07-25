@@ -1,0 +1,28 @@
+@mixin ambient-hover($opacity: 1) {
+  opacity: 0;
+  transition: opacity ease-in-out 0.45s;
+
+  &:global(.active) {
+    opacity: $opacity;
+  }
+}
+
+.ambient {
+  background: url("/assets/home-ambient.png");
+  @include ambient-hover();
+}
+
+.ambientCity {
+  background: url("/assets/city-ambient.png");
+  @include ambient-hover(0.1);
+}
+
+.ambientMe {
+  background: url("/assets/me-ambient.png");
+  @include ambient-hover(0.1);
+}
+
+.additionalText {
+  user-select: none;
+  cursor: pointer;
+}

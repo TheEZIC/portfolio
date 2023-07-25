@@ -1,0 +1,14 @@
+@import "../../styles/index";
+
+.ambient {
+  background: url("/assets/projects-ambient.png");
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+

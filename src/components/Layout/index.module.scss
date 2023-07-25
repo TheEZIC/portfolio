@@ -1,0 +1,28 @@
+@import "src/styles";
+
+.layout {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 46px 70px 56px 70px;
+
+  background: $main-color;
+
+  & > * {
+    z-index: 2;
+  }
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+.bottom {
+  min-height: 120px;
+  justify-content: space-between;
+}
+
+.left {
+  align-items: flex-end;
+}

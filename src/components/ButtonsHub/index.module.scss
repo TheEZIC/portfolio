@@ -1,0 +1,15 @@
+@import "src/styles";
+
+.hub {
+  display: flex;
+  flex-direction: column-reverse !important;
+}
+
+.hubRow {
+  flex-direction: row-reverse !important;
+}
+
+.translationText {
+  text-transform: uppercase;
+  user-select: none;
+}
