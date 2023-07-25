@@ -1,5 +1,5 @@
-import React, {FC, PropsWithChildren} from 'react';
-import {Size} from "../../types/Size";
+import React, {createElement, FC, PropsWithChildren} from 'react';
+import {Size} from "@t/Size";
 import styles from "./index.module.scss";
 import {combineStyles} from "../../utils/combineStyles";
 
@@ -20,8 +20,8 @@ const getHeadingSize = (size: Size): string => {
 const Heading: FC<HeadingProps> = ({
   className,
   style,
-  s= "md",
-  as= "h6",
+  s = "md",
+  as = "h6",
   children,
   ...rest
 }) => {
@@ -31,32 +31,11 @@ const Heading: FC<HeadingProps> = ({
     fontSize: getHeadingSize(s),
   };
 
-  switch (as) {
-    case "h1":
-      return (
-        <h1 className={classString} style={style} {...rest}>{children}</h1>
-      );
-    case "h2":
-      return (
-        <h2 className={classString} style={style} {...rest}>{children}</h2>
-      );
-    case "h3":
-      return (
-        <h3 className={classString} style={style} {...rest}>{children}</h3>
-      );
-    case "h4":
-      return (
-        <h4 className={classString} style={style} {...rest}>{children}</h4>
-      );
-    case "h5":
-      return (
-        <h5 className={classString} style={style} {...rest}>{children}</h5>
-      );
-    case "h6":
-      return (
-        <h6 className={classString} style={style} {...rest}>{children}</h6>
-      );
-  }
+  return createElement(as, {
+    className: classString,
+    style,
+    ...rest,
+  }, children);
 };
 
 export default Heading;
