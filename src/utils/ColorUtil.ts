@@ -1,14 +1,14 @@
-type RGBColor = {
+export type RGBColor = {
   R: string;
   G: string;
   B: string;
 };
 
-type RGBAColor = {
+export type RGBAColor = {
   A: string;
 } & RGBColor
 
-type ParseColorResult = {
+export type ParseColorResult = {
   A?: string;
 } & RGBColor
 
@@ -16,30 +16,28 @@ export class ColorUtil {
   private static hexRegExp = /#(?<R>\w{1,2})(?<G>\w{1,2})(?<B>\w{1,2})(?<A>\w{1,2})?$/i;
   private static rgbaRegExp = /rgb(a)?\((?<R>\d+),(?<G>\d+),(?<B>\d+)(,(?<A>\d+))?\)$/i;
 
-  public static toHex(color: string) {
+  public static toHex(color: string): string {
     color = color.replace(/ /g, "").trim();
 
     if (!this.rgbaRegExp.test(color)) {
       throw new Error("Wrong color provided");
     }
 
-    const result = this.parseColorResult(this.rgbaRegExp, color, this.convertDecimalStringToHexColorString);
-    const { R, G, B, A } = result;
+    const { R, G, B, A } = this.parseColorResult(this.rgbaRegExp, color, this.convertDecimalStringToHexColorString);
 
-    return A ? `#${R}${G}${B}${A!}` : `#${R}${G}${B}`
+    return A ? `#${R}${G}${B}${A}` : `#${R}${G}${B}`;
   }
 
-  public static toRgb(color: string) {
+  public static toRgb(color: string): string {
     color = color.trim();
 
     if (!this.hexRegExp.test(color)) {
       throw new Error("Wrong color provided");
     }
 
-    const result = this.parseColorResult(this.hexRegExp, color, this.convertHexStringToDecimalColorString);
-    const { R, G, B, A } = result;
+    const { R, G, B, A } = this.parseColorResult(this.hexRegExp, color, this.convertHexStringToDecimalColorString);
 
-    return A ? `rgba(${R}, ${G}, ${B}, ${A})` : `rgb(${result.R}, ${result.G}, ${result.B})`;
+    return A ? `rgba(${R}, ${G}, ${B}, ${A})` : `rgb(${R}, ${G}, ${B})`;
   }
 
   private static parseColorResult(
@@ -48,7 +46,6 @@ export class ColorUtil {
     convertStrategy?: (value: string) => string
   ): ParseColorResult {
     let result = regexp.exec(color)!.groups! as ParseColorResult;
-    console.log(result, "r")
     result = convertStrategy ? this.convertRgbaResult(result, convertStrategy) : result;
 
     return result
@@ -66,8 +63,8 @@ export class ColorUtil {
     return output as ParseColorResult;
   }
 
-  private static convertDecimalStringToHexColorString(str: string) {
-    let hex = parseInt(str, 10).toString(16).toUpperCase();
+  private static convertDecimalStringToHexColorString(str: string): string {
+    let hex = this.convertStringNumberNumericSystem(str, 10, 16).toUpperCase();
 
     if (hex.length < 2) {
       hex = hex.padStart(2, "0");
@@ -77,6 +74,10 @@ export class ColorUtil {
   }
 
   private static convertHexStringToDecimalColorString(str: string): string {
-    return parseInt(`0x${str}`, 16).toString(10);
+    return this.convertStringNumberNumericSystem(str, 16, 10);
+  }
+
+  private static convertStringNumberNumericSystem(str: string, from: number, to: number): string {
+    return parseInt(str, from).toString(to);
   }
 }
