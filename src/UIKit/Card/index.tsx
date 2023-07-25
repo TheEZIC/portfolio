@@ -1,10 +1,11 @@
 "use client";
 
-import React, {FC, HTMLProps, PropsWithChildren, useEffect, useRef} from 'react';
+import React, {FC, HTMLProps, PropsWithChildren} from 'react';
 import {combineStyles} from "../../utils/combineStyles";
 import VStack from "../Stack/VStack";
 import {useCursorPosition} from "../../hooks/useCursorPosition";
 import styles from "./index.module.scss";
+import {css} from "@emotion/css";
 
 export type CardProps = HTMLProps<HTMLDivElement> & PropsWithChildren;
 
@@ -14,17 +15,15 @@ const Card: FC<CardProps> = ({
   ...rest
 }) => {
   const [[x, y], mouseEvents] = useCursorPosition();
-  const ref = useRef<HTMLDivElement>(null);
+  const glowPositionStyle = css({
+    "--glow-x": `${x}px`,
+    "--glow-y": `${y}px`,
+  });
 
-  useEffect(() => {
-    ref.current?.style.setProperty("--glow-x", `${x}px`);
-    ref.current?.style.setProperty("--glow-y", `${y}px`);
-  }, [x, y]);
-
-  const cardStyles = combineStyles([className,  styles.card]);
+  const cardStyles = combineStyles([className, glowPositionStyle, styles.card]);
 
   return (
-    <VStack ref={ref} className={cardStyles} {...mouseEvents}>{children}</VStack>
+    <VStack className={cardStyles} {...mouseEvents} {...rest}>{children}</VStack>
   );
 };
 
