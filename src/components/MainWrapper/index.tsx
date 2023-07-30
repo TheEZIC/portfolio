@@ -5,6 +5,7 @@ import {Theme} from "@t/Theme";
 import {ThemeProvider} from "./ThemeContext";
 import CustomHTMLElement from "./CustomHTMLElement";
 import {FC, PropsWithChildren} from "react";
+import dynamic from "next/dynamic";
 
 export type MainWrapperProps = PropsWithChildren;
 
@@ -21,4 +22,6 @@ const MainWrapper: FC<MainWrapperProps> = ({ children }) => {
   );
 };
 
-export default MainWrapper;
+export default dynamic(() => Promise.resolve(MainWrapper), {
+  ssr: false,
+});
