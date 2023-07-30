@@ -1,4 +1,4 @@
-import {useThemeContext} from "../ThemeContext";
+import {useThemeContext} from "@components/MainWrapper/ThemeContext";
 
 export const useThemeColor = (lightColor: string, darkColor: string): string => {
   const { theme } = useThemeContext();

@@ -2,11 +2,11 @@
 
 import React, {FC, PropsWithChildren, useEffect, useRef} from 'react';
 import {useThemeContext} from "./ThemeContext";
-import {Theme} from "./types/Theme";
-import {ColorUtil} from "./utils/ColorUtil";
-import {LightTheme} from "./themes/Light";
-import {DarkTheme} from "./themes/Dark";
-import {pascalToKebab} from "./utils/pascalToKebab";
+import {Theme} from "@t/Theme";
+import {ColorUtil} from "@utils/ColorUtil";
+import {LightTheme} from "@themes/Light";
+import {DarkTheme} from "@themes/Dark";
+import {pascalToKebab} from "@utils/pascalToKebab";
 
 type CustomHtmlElementProps = PropsWithChildren;
 

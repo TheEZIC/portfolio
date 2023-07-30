@@ -2,8 +2,8 @@
 
 import {useLocalStorage} from "@hooks/useLocalStorage";
 import {Theme} from "@t/Theme";
-import {ThemeProvider} from "../../ThemeContext";
-import CustomHTMLElement from "../../CustomHTMLElement";
+import {ThemeProvider} from "./ThemeContext";
+import CustomHTMLElement from "./CustomHTMLElement";
 import {FC, PropsWithChildren} from "react";
 
 export type MainWrapperProps = PropsWithChildren;

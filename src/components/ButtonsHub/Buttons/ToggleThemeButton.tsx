@@ -3,7 +3,7 @@
 import React from 'react';
 import {VscColorMode} from "react-icons/vsc";
 import IconBtn from "@uikit/IconBtn";
-import {useThemeContext} from "../../../ThemeContext";
+import {useThemeContext} from "../../MainWrapper/ThemeContext";
 
 const ToggleThemeButton = () => {
   const { toggleTheme } = useThemeContext();
