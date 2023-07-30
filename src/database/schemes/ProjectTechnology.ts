@@ -1,5 +1,5 @@
 import {Schema, Document, Types, model} from "mongoose";
-import {TechnologyModel} from "./Technology";
+import {Technology} from "./Technology";
 
 export type ProjectTechnology = {
   technology: Technology;
