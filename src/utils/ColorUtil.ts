@@ -19,11 +19,11 @@ export class ColorUtil {
   public static toHex(color: string): string {
     color = color.replace(/ /g, "").trim();
 
-    if (!this.rgbaRegExp.test(color)) {
+    if (!ColorUtil.rgbaRegExp.test(color)) {
       throw new Error("Wrong color provided");
     }
 
-    const { R, G, B, A } = this.parseColorResult(this.rgbaRegExp, color, this.convertDecimalStringToHexColorString);
+    const { R, G, B, A } = ColorUtil.parseColorResult(ColorUtil.rgbaRegExp, color, ColorUtil.convertDecimalStringToHexColorString);
 
     return A ? `#${R}${G}${B}${A}` : `#${R}${G}${B}`;
   }
@@ -31,11 +31,11 @@ export class ColorUtil {
   public static toRgb(color: string): string {
     color = color.trim();
 
-    if (!this.hexRegExp.test(color)) {
+    if (!ColorUtil.hexRegExp.test(color)) {
       throw new Error("Wrong color provided");
     }
 
-    const { R, G, B, A } = this.parseColorResult(this.hexRegExp, color, this.convertHexStringToDecimalColorString);
+    const { R, G, B, A } = ColorUtil.parseColorResult(ColorUtil.hexRegExp, color, ColorUtil.convertHexStringToDecimalColorString);
 
     return A ? `rgba(${R}, ${G}, ${B}, ${A})` : `rgb(${R}, ${G}, ${B})`;
   }
@@ -46,7 +46,7 @@ export class ColorUtil {
     convertStrategy?: (value: string) => string
   ): ParseColorResult {
     let result = regexp.exec(color)!.groups! as ParseColorResult;
-    result = convertStrategy ? this.convertRgbaResult(result, convertStrategy) : result;
+    result = convertStrategy ? ColorUtil.convertRgbaResult(result, convertStrategy) : result;
 
     return result
   }
@@ -64,7 +64,7 @@ export class ColorUtil {
   }
 
   private static convertDecimalStringToHexColorString(str: string): string {
-    let hex = this.convertStringNumberNumericSystem(str, 10, 16).toUpperCase();
+    let hex = ColorUtil.convertStringNumberNumericSystem(str, 10, 16).toUpperCase();
 
     if (hex.length < 2) {
       hex = hex.padStart(2, "0");
@@ -74,7 +74,7 @@ export class ColorUtil {
   }
 
   private static convertHexStringToDecimalColorString(str: string): string {
-    return this.convertStringNumberNumericSystem(str, 16, 10);
+    return ColorUtil.convertStringNumberNumericSystem(str, 16, 10);
   }
 
   private static convertStringNumberNumericSystem(str: string, from: number, to: number): string {
