@@ -25,6 +25,7 @@
       "@uikit/*": ["./src/UIKit/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@themes/*": ["./src/themes/*"],
+      "@database/*": ["./src/database/*"],
       "@t/*": ["./src/types/*"],
       "@utils/*": ["./src/utils/*"],
       "@constants/*": ["./src/constants/*"],
