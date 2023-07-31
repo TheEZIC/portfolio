@@ -1,0 +1,63 @@
+version: '3.3'
+services:
+  psql:
+    container_name: dev-portfolio-db
+    image: postgres:alpine
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/psql:/var/lib/postgresql/data
+    networks:
+      - portfolio
+    env_file:
+      - .env
+
+  backend:
+    container_name: dev-portfolio-back
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: dockerfiles/development/backend.dockerfile
+    volumes:
+      - ./backend:/usr/backend
+    networks:
+      - portfolio
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - psql
+
+  frontend:
+    container_name: dev-portfolio-front
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: dockerfiles/development/frontend.dockerfile
+    volumes:
+      - ./frontend:/usr/frontend
+    networks:
+      - portfolio
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - psql
+
+  nginx:
+    container_name: dev-portfolio-nginx
+    image: nginx:stable
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./data/frontend:/var/www/html
+      - ./data/nginx.development:/etc/nginx/conf.d/
+    networks:
+      - portfolio
+    depends_on:
+      - backend
+      - frontend
+
+networks:
+  portfolio:
+    driver: bridge
