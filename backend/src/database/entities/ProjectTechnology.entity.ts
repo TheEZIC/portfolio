@@ -20,8 +20,6 @@ export class ProjectTechnologyEntity {
     name: "technology_id",
     nullable: false,
   })
-  @ManyToOne(() => TechnologyEntity, (technology) => technology.projectTechnologies, {
-    eager: true,
-  })
-  base: ProjectTechnologyEntity;
+  @ManyToOne(() => TechnologyEntity, (technology) => technology.projectTechnologies)
+  base: TechnologyEntity;
 }

@@ -5,6 +5,7 @@ import VStack from "@uikit/Stack/VStack";
 import Logo from "../Logo";
 import Navigation from "../Navigation";
 import ButtonsHub from "../ButtonsHub";
+import CustomScroll from "@components/CustomScroll";
 
 type LayoutProps = {
   ambient?: ReactNode;
@@ -15,7 +16,9 @@ const Layout: FC<LayoutProps> = ({ ambient, children }) => {
     <>
       {ambient}
       <VStack className={styles.layout}>
-        <div className={styles.content}>{children}</div>
+        <CustomScroll className={styles.content}>
+          {children}
+        </CustomScroll>
         <HStack className={styles.bottom}>
           <HStack className={styles.left}>
             <Logo/>

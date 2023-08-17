@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AboutModule } from './about/about.module';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { AboutModule } from "./about/about.module";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { TypeORMConfig } from "../TypeORM.config";
+import { ProjectsModule } from "./projects/projects.module";
 
 @Module({
   imports: [
@@ -13,12 +14,14 @@ import { TypeORMConfig } from "../TypeORM.config";
       envFilePath: ".env"
     }),
     TypeOrmModule.forRoot({
-      ...TypeORMConfig,
+      ...(TypeORMConfig as any),
       autoLoadEntities: true,
     }),
     AboutModule,
+    ProjectsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+}

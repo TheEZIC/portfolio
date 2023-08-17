@@ -8,7 +8,7 @@ const ProjectsPage = () => {
   const projectsAmbient = combineStyles(["ambient", styles.ambient]);
 
   const renderProjects = () => {
-    return new Array(7).fill(0).map((j, i) => (
+    return new Array(20).fill(0).map((j, i) => (
       <ProjectCard />
     ));
   };

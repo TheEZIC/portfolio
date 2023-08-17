@@ -9,7 +9,7 @@ export class CreateProjectTechnologyRelations1690810778563 extends CreateTableFk
     new TableForeignKey({
       columnNames: ["technology_id"],
       referencedTableName: "technology",
-      referencedColumnNames: ["technology_id"],
+      referencedColumnNames: ["id"],
     }),
   ];
 }

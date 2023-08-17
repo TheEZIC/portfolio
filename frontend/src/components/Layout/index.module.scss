@@ -4,6 +4,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
+  max-height: 100vh;
   padding: 46px 70px 56px 70px;
 
   background: $main-color;
@@ -15,7 +16,7 @@
 
 .content {
   flex: 1;
-  overflow: auto;
+  margin-bottom: 20px;
 }
 
 .bottom {
