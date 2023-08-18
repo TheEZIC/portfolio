@@ -11,12 +11,12 @@ import React, {
   useState,
 } from "react";
 import { Property } from "csstype";
+import { createPortal } from "react-dom";
 import { combineStyles } from "@utils/combineStyles";
 import { clamp } from "@utils/clamp";
-import styles from "./index.module.scss";
 import Scrollbar from "@components/CustomScroll/Scrollbar";
 import { css } from "@emotion/css";
-import { createPortal } from "react-dom";
+import styles from "./index.module.scss";
 
 export type CustomScrollProps = {
   overflowX?: Property.OverflowX;
@@ -70,11 +70,6 @@ const CustomScroll: FC<CustomScrollProps> = ({
   };
 
   useEffect(() => {
-    if (attachXTo) {
-      const element = document.querySelector(attachXTo);
-      element && createPortal(renderXScrollBar(), element);
-    }
-
     return () => {
       unobserveElement(outerRef);
       resizeObserver.current.disconnect();
