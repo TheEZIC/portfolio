@@ -16,7 +16,11 @@ const Layout: FC<LayoutProps> = ({ ambient, children }) => {
     <>
       {ambient}
       <VStack className={styles.layout}>
-        <CustomScroll className={styles.content}>
+        <CustomScroll
+          className={styles.content}
+          overflowX={"hidden"}
+          attachYTo={"body"}
+        >
           {children}
         </CustomScroll>
         <HStack className={styles.bottom}>
