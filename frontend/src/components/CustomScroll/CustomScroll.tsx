@@ -75,8 +75,6 @@ const CustomScroll: FC<CustomScrollProps> = ({
       element && createPortal(renderXScrollBar(), element);
     }
 
-
-
     return () => {
       unobserveElement(outerRef);
       resizeObserver.current.disconnect();
