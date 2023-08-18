@@ -11,7 +11,6 @@ import React, {
   useState,
 } from "react";
 import { Property } from "csstype";
-import { useEvent } from "@hooks/useEvent";
 import { combineStyles } from "@utils/combineStyles";
 import { clamp } from "@utils/clamp";
 import styles from "./index.module.scss";
@@ -171,7 +170,7 @@ const CustomScroll: FC<CustomScrollProps> = ({
     setHeight(() => height);
   };
 
-  const onScroll = useEvent(() => {
+  const onScroll = () => {
     if (!outerRef.current) {
       return;
     }
@@ -183,7 +182,7 @@ const CustomScroll: FC<CustomScrollProps> = ({
     if (overflowY !== "hidden" && innerHeight !== null && outerHeight !== null) {
       setScrollY(clamp(outerRef.current!.scrollTop, 0, maxScrollYDistance));
     }
-  });
+  };
 
   const scrollbarContainerClassName = css({
     left: `${scrollX}px`,
