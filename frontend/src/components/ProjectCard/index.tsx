@@ -17,13 +17,16 @@ const ProjectCard: FC<ProjectCardProps> = ({ id }) => {
   return (
     <Card>
       <div className={styles.projectImage}>
-        <Image
-          className={styles.image}
-          width={300}
-          height={150}
-          src={"https://mobimg.b-cdn.net/v3/fetch/06/06fc18c093d3706106e26338f040a3fa.jpeg?w=1470&r=0.5625"}
-          alt={""}
-        />
+        <div className={styles.imageWrapper}>
+          <Image
+            className={styles.image}
+            width={1920}
+            height={1080}
+            src={"https://mobimg.b-cdn.net/v3/fetch/06/06fc18c093d3706106e26338f040a3fa.jpeg?w=1470&r=0.5625"}
+            alt={""}
+          />
+        </div>
+
         <Link className={styles.readMore} href={`/projects/${id}`}>
           <VStack className={styles.readMoreBody} spacing={1}>
             <Text s={"xl"}><BsBoxArrowRight/></Text>
