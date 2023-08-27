@@ -1,3 +1,5 @@
+@import "src/styles";
+
 .logo {
   width: 350px;
   text-transform: uppercase;
@@ -5,4 +7,12 @@
   line-height: 135%;
   margin-bottom: -10px !important;
   cursor: pointer;
+
+  @media screen and (max-width: $small-device) {
+    width: 245px;
+  }
+
+  @media screen and (max-width: $mobile-device) {
+    width: 150px;
+  }
 }

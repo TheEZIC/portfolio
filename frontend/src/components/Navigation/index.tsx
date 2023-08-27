@@ -4,7 +4,8 @@ import React, {FC, ReactNode} from 'react';
 import Text from "@uikit/Text"
 import styles from "./index.module.scss";
 import Link from "@uikit/Link";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useWindowDimension } from "@hooks/useWindowDemension";
 
 type Path = {
   path: string;
@@ -22,6 +23,7 @@ const PATHS: Path[] = [
 ];
 
 const Navigation: FC = () => {
+  const [windowWidth] = useWindowDimension();
   const pathname = usePathname();
 
   const renderNavItems = (): ReactNode =>
@@ -30,7 +32,7 @@ const Navigation: FC = () => {
         <Link href={p.path}>
           <Text
             className={`${styles.item} ${pathname?.startsWith(p.path) ? "active" : ""}`}
-            s={"lg"}
+            s={windowWidth > 940 ? "lg" : "md"}
           >
             {p.text}
           </Text>

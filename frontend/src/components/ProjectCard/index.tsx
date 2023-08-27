@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { FC } from "react";
 import VStack from "@uikit/Stack/VStack";
 import Text from "@uikit/Text";
-import {BsBoxArrowRight} from "react-icons/bs";
+import { BsBoxArrowRight } from "react-icons/bs";
 import HStack from "@uikit/Stack/HStack";
 import Heading from "@uikit/Heading";
 import Card from "@uikit/Card";
 import styles from "./index.module.scss";
 import Image from "next/image";
+import Link from "@uikit/Link";
 
-const ProjectCard = () => {
+export type ProjectCardProps = {
+  id: number;
+};
+
+const ProjectCard: FC<ProjectCardProps> = ({ id }) => {
   return (
     <Card>
       <div className={styles.projectImage}>
@@ -19,12 +24,12 @@ const ProjectCard = () => {
           src={"https://mobimg.b-cdn.net/v3/fetch/06/06fc18c093d3706106e26338f040a3fa.jpeg?w=1470&r=0.5625"}
           alt={""}
         />
-        <div className={styles.readMore}>
+        <Link className={styles.readMore} href={`/projects/${id}`}>
           <VStack className={styles.readMoreBody} spacing={1}>
             <Text s={"xl"}><BsBoxArrowRight/></Text>
             <Text as={"b"}>читать больше</Text>
           </VStack>
-        </div>
+        </Link>
       </div>
       <HStack className={styles.body}>
         <VStack spacing={3}>

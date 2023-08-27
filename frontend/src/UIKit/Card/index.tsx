@@ -5,9 +5,10 @@ import {combineStyles} from "../../utils/combineStyles";
 import VStack from "../Stack/VStack";
 import {useCursorPosition} from "../../hooks/useCursorPosition";
 import styles from "./index.module.scss";
-import {css} from "@emotion/css";
+import { css } from "@emotion/css";
+import { StackProps } from "@uikit/Stack";
 
-export type CardProps = HTMLProps<HTMLDivElement> & PropsWithChildren;
+export type CardProps = HTMLProps<HTMLDivElement> & StackProps & PropsWithChildren;
 
 const Card: FC<CardProps> = ({
   className,

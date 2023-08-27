@@ -5,13 +5,13 @@ import {combineStyles} from "@utils/combineStyles";
 import ProjectCard from "@components/ProjectCard";
 
 const ProjectsPage = () => {
-  const projectsAmbient = combineStyles(["ambient", styles.ambient]);
+  const projectsAmbient = combineStyles(["ambient", "active", styles.ambient]);
 
-  const renderProjects = () => {
-    return new Array(20).fill(0).map((j, i) => (
-      <ProjectCard />
+  const renderProjects = () => new Array(20)
+    .fill(0)
+    .map((j, i) => (
+      <ProjectCard key={`project-${i}`} id={i}/>
     ));
-  };
 
   return (
     <Layout ambient={<div className={projectsAmbient}/>}>

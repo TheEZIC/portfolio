@@ -1,0 +1,34 @@
+@import "src/styles";
+
+.mobileMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 70px 28px 28px;
+  background: $mobile-menu-background;
+
+  backdrop-filter: blur(10px);
+  z-index: 3 !important;
+
+  :global(.ambient.active) {
+    opacity: $mobile-menu-ambient-opacity;
+    z-index: 2;
+  }
+
+  & > * {
+    z-index: 3;
+  }
+}
+
+.buttons {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+}

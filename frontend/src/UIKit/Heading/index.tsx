@@ -10,7 +10,10 @@ export type HeadingProps = {
 
 const getHeadingSize = (size: Size): string => {
   switch (size) {
-    case "sm": return "20px";
+    case "xs":
+      return "16px";
+    case "sm":
+      return "20px";
     case "md": return "34px";
     case "lg": return "48px";
     case "xl": return "62px";
@@ -28,7 +31,7 @@ const Heading: FC<HeadingProps> = ({
   const classString = combineStyles([className, styles.heading]);
   style = {
     ...style,
-    fontSize: getHeadingSize(s),
+    fontSize: getHeadingSize(s as Size),
   };
 
   return createElement(as, {

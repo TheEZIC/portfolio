@@ -20,7 +20,7 @@ const applyTheme = (htmlElement: HTMLElement, currentTheme: Theme) => {
   }
 };
 
-const setCssVariable = (htmlElement: HTMLElement, key: string, value: string) => {
+const setCssVariable = (htmlElement: HTMLElement, key: string, value: string | number) => {
   htmlElement.style.setProperty(processCssKey(key), processCssValue(value));
 };
 
@@ -28,14 +28,12 @@ const processCssKey = (key: string) => {
   return "--" + pascalToKebab(key);
 };
 
-const processCssValue = (value: string) => {
-  let result: string = value;
-
-  if (value.startsWith("#") || value.startsWith("rgb")) {
-    result = processCssColorValue(result);
+const processCssValue = (value: string | number): string => {
+  if (typeof value === "string" && (value.startsWith("#") || value.startsWith("rgb"))) {
+    value = processCssColorValue(value);
   }
 
-  return result;
+  return String(value);
 };
 
 const processCssColorValue = (color: string) => {

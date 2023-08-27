@@ -43,7 +43,7 @@ const Home = () => {
 
   return (
     <Layout ambient={ambients}>
-      <HStack spacing={12}>
+      <HStack className={styles.infoContainer} spacing={12}>
         <Text className={styles.additionalText} s={"lg"} {...meEvents}>frontend developer</Text>
         <Text className={styles.additionalText} s={"lg"} {...cityEvents}>voronezh, russia</Text>
       </HStack>

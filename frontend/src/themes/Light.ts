@@ -17,4 +17,9 @@ export const LightTheme = {
   IconButtonBackground: "rgba(189, 189, 189, 0.2)",
 
   ReadMoreBackground: "rgba(255, 255, 255, 0.75)",
+
+  ProjectBtnBackground: "linear-gradient(135deg, rgba(189, 189, 189, 0.24) 0%, rgba(189, 189, 189, 0.06) 100%)",
+
+  MobileMenuBackground: "rgba(250, 250, 250, 0.75)",
+  MobileMenuAmbientOpacity: 0.2,
 };

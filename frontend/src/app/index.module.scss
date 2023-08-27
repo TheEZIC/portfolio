@@ -1,3 +1,5 @@
+@import "src/styles";
+
 @mixin ambient-hover($opacity: 1) {
   opacity: 0;
   transition: opacity ease-in-out 0.45s;
@@ -7,22 +9,37 @@
   }
 }
 
+.infoContainer {
+  @media screen and (max-width: $mobile-device) {
+    flex-direction: column !important;
+    gap: 8px !important;
+
+    .additionalText {
+      font-size: 14px !important;
+    }
+  }
+}
+
 .ambient {
-  background: url("/assets/home-ambient.png");
+  background-image: url("/assets/home-ambient.png");
   @include ambient-hover();
 }
 
 .ambientCity {
-  background: url("/assets/city-ambient.png");
+  background-image: url("/assets/city-ambient.png");
   @include ambient-hover(0.1);
 }
 
 .ambientMe {
-  background: url("/assets/me-ambient.png");
+  background-image: url("/assets/me-ambient.png");
   @include ambient-hover(0.1);
 }
 
 .additionalText {
   user-select: none;
   cursor: pointer;
+
+  @media screen and (max-width: $mobile-device) {
+    font-size: 20px !important;
+  }
 }

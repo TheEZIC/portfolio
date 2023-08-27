@@ -10,7 +10,10 @@ export type TextProps = {
 
 const getTextSize = (size: Size) => {
   switch (size) {
-    case "sm": return "16px";
+    case "xs":
+      return "14px";
+    case "sm":
+      return "16px";
     case "md": return "20px";
     case "lg": return "25px";
     case "xl": return "31.25px";

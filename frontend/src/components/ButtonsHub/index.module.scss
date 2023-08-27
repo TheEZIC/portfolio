@@ -3,6 +3,21 @@
 .hub {
   display: flex;
   flex-direction: column-reverse !important;
+
+  @media screen and (max-width: $mobile-device) {
+    flex-direction: row !important;
+  }
+}
+
+.hubIcon {
+  @media screen and (max-width: $small-device) and (min-width: $mobile-device) {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      transform: scale(0.8);
+    }
+  }
 }
 
 .hubRow {
@@ -12,4 +27,8 @@
 .translationText {
   text-transform: uppercase;
   user-select: none;
+
+  @media screen and (max-width: $small-device) {
+    font-size: 14px !important;
+  }
 }

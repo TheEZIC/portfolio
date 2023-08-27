@@ -7,7 +7,7 @@ import IconBtn from "@uikit/IconBtn";
 
 const ChangeTranslationButton = () => {
   return (
-    <IconBtn icon={<Text className={styles.translationText}>ru</Text>}/>
+    <IconBtn className={styles.hubIcon} icon={<Text className={styles.translationText}>ru</Text>}/>
   );
 };
 

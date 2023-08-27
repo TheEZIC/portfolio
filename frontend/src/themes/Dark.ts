@@ -17,4 +17,9 @@ export const DarkTheme = {
   IconButtonBackground: "rgba(0, 0, 0, 0.2)",
 
   ReadMoreBackground: "rgba(23, 23, 23, 0.85)",
+
+  ProjectBtnBackground: "linear-gradient(135deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.06) 100%)",
+
+  MobileMenuBackground: "rgba(0, 0, 0, 0.9)",
+  MobileMenuAmbientOpacity: 0.08,
 };

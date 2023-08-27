@@ -17,6 +17,7 @@ import { clamp } from "@utils/clamp";
 import Scrollbar from "@components/CustomScroll/Scrollbar";
 import { css } from "@emotion/css";
 import styles from "./index.module.scss";
+import { useWindowEvent } from "@hooks/useWindowEvent";
 
 export type CustomScrollProps = {
   overflowX?: Property.OverflowX;
@@ -75,6 +76,11 @@ const CustomScroll: FC<CustomScrollProps> = ({
       resizeObserver.current.disconnect();
     };
   }, []);
+
+  useWindowEvent("resize", () => {
+    setBoundary(outerRef, setOuterWidth, setOuterHeight);
+    setBoundary(innerRef, setInnerWidth, setInnerHeight);
+  });
 
   const renderXScrollbarPortal = () => renderScrollbarPortal(renderXScrollBar, attachXTo);
   const renderYScrollbarPortal = () => renderScrollbarPortal(renderYScrollBar, attachYTo);

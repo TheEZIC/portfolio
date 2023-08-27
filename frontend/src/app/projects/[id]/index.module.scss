@@ -1,0 +1,36 @@
+@import "src/styles";
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.image {
+  flex: 1 1 500px;
+  height: auto;
+  border-radius: 20px;
+}
+
+.mainCard {
+  flex: 1 1 520px;
+  justify-content: space-between;
+}
+
+.paragraph {
+  color: $casual-gray;
+}
+
+.footer {
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $card-border;
+  padding: 24px 24px 0px;
+}
+
+.techStack {
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
