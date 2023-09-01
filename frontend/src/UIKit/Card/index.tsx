@@ -21,10 +21,14 @@ const Card: FC<CardProps> = ({
     "--glow-y": `${y}px`,
   });
 
-  const cardStyles = combineStyles([className, glowPositionStyle, styles.card]);
+  const cardStyles = combineStyles([glowPositionStyle, styles.card]);
+  const cardContentStyles = combineStyles([className, styles.cardContent]);
 
   return (
-    <VStack className={cardStyles} {...mouseEvents} {...rest}>{children}</VStack>
+    <div className={cardStyles}>
+      <div className={styles.cardBorder}/>
+      <VStack className={cardContentStyles} {...mouseEvents} {...rest}>{children}</VStack>
+    </div>
   );
 };
 

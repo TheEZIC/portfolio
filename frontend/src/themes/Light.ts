@@ -13,6 +13,7 @@ export const LightTheme = {
   CardBackground: "rgba(189, 189, 189, 0.1)",
   CardBorder: "rgba(189, 189, 189, 0.9)",
   CardGlow: "rgba(23, 23, 23, 0.1)",
+  CardBorderGlow: "rgba(23, 23, 23, 0.05)",
 
   IconButtonBackground: "rgba(189, 189, 189, 0.2)",
 

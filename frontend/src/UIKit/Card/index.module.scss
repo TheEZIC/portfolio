@@ -1,22 +1,18 @@
 @import "src/styles";
 
+$border-width: 1px;
+
 .card {
   position: relative;
 
-  padding: 24px 22px;
-
-  border: 1px solid $card-border;
   border-radius: 20px;
-
-  background-color: $card-background;
-
   overflow: hidden;
+  background-color: $card-border;
 
-  & > * {
-    z-index: 3;
-  }
+  //backdrop-filter: blur(1000px);
 
-  &::before {
+  &::before,
+  & > .cardBorder {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,22 +21,54 @@
     width: 100%;
     height: 100%;
 
-    background: radial-gradient(
-      800px circle at var(--glow-x) var(--glow-y),
-      $card-glow,
-      transparent 40%
-    );
-
     pointer-events: none;
     opacity: 0;
-    z-index: 2;
 
     filter: blur(2px);
 
     transition: opacity ease-in-out 0.15s;
   }
 
-  &:hover::before {
+  &::before {
+    background: radial-gradient(
+                    800px circle at var(--glow-x) var(--glow-y),
+                    $card-glow,
+                    transparent 40%
+    );
+    z-index: 3;
+  }
+
+  & > .cardBorder {
+    background: radial-gradient(
+                    800px circle at var(--glow-x) var(--glow-y),
+                    $card-border-glow,
+                    transparent 40%
+    );
+    z-index: 1;
+  }
+
+  &:hover::before,
+  &:hover > .cardBorder {
     opacity: 1;
   }
 }
+
+.cardContent {
+  position: relative;
+
+  width: calc(100% - $border-width * 2);
+  height: calc(100% - $border-width * 2);
+  margin: $border-width;
+  padding: 24px 22px;
+
+  border-radius: inherit;
+
+  background-color: #131315;
+
+  z-index: 2;
+
+  & > * {
+    z-index: 4;
+  }
+}
+

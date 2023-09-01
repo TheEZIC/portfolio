@@ -12,7 +12,8 @@ export const DarkTheme = {
 
   CardBackground: "rgba(59, 59, 59, 0.01)",
   CardBorder: "rgba(59, 59, 59, 0.95)",
-  CardGlow: "rgba(250, 250, 250, 0.06)",
+  CardGlow: "rgba(255, 255, 255, 0.06)",
+  CardBorderGlow: "rgba(255, 255, 255, 0.4)",
 
   IconButtonBackground: "rgba(0, 0, 0, 0.2)",
 
