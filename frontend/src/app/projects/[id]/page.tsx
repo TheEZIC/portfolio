@@ -9,6 +9,7 @@ import Text from "@uikit/Text";
 import ProjectBtn from "@uikit/ProjectBtn";
 import { FaArrowRight, FaGithub, FaHtml5, FaReact } from "react-icons/fa";
 import VStack from "@uikit/Stack/VStack";
+import ProjectAmbient from "@app/projects/[id]/ProjectAmbient";
 
 type ProjectPageProps = {
   params: {
@@ -20,15 +21,21 @@ const ProjectPage: FC<ProjectPageProps> = (props) => {
   const { params } = props;
   const { id } = params;
 
+  // const image = "https://w.forfun.com/fetch/33/33351c8ca634f2a7ce715c0313a862c2.jpeg";
+  // const image = "https://cdn2.unrealengine.com/genshin-impact-update-2-0-3840x2160-df1f8dc45e7e.jpg";
+  // const image = "https://wa-groups.ru/images/uploads/CCezx3SOJ0pD7HGVZHoLA6.jpg";
+  const image = "https://images.wallpapersden.com/image/download/tighnari-x-collei-4k-genshin-impact_bWpubmyUmZqaraWkpJRqZWVlrWlma2w.jpg";
+
+
   return (
-    <Layout>
+    <Layout ambient={<ProjectAmbient src={image}/>}>
       <div className={styles.content}>
         <div className={styles.imageWrapper}>
           <Image
             className={styles.image}
-            width={300}
-            height={150}
-            src={"https://mobimg.b-cdn.net/v3/fetch/06/06fc18c093d3706106e26338f040a3fa.jpeg?w=1470&r=0.5625"}
+            width={1920}
+            height={1080}
+            src={image}
             alt={""}
           />
         </div>
