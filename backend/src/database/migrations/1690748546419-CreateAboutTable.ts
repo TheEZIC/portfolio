@@ -17,13 +17,13 @@ export class CreateAboutTable1690748546419 extends CreateTableMigration implemen
           generationStrategy: "increment",
         },
         {
-          name: "title",
-          type: "text",
+          name: "title_id",
+          type: "integer",
           isNullable: false,
         },
         {
-          name: "text",
-          type: "text",
+          name: "text_id",
+          type: "integer",
           isNullable: false,
         },
       ],

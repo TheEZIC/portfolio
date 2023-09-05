@@ -26,14 +26,14 @@
     height: 100%;
 
     background: radial-gradient(
-      800px circle at var(--glow-x) var(--glow-y),
-      $card-glow,
-      transparent 40%
+                    800px circle at var(--glow-x) var(--glow-y),
+                    $card-glow,
+                    transparent 40%
     );
 
     pointer-events: none;
     opacity: 0;
-    z-index: 2;
+    z-index: 1;
 
     filter: blur(2px);
 

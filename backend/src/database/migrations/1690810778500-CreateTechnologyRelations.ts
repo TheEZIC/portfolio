@@ -2,17 +2,17 @@ import { MigrationInterface, QueryRunner, TableForeignKey } from "typeorm"
 import { CreateTableFkMigration } from "@database/migrations/abstracts/CreateTableFkMigration";
 import { SingleTableMigration } from "@database/migrations/types";
 
-export class CreateProjectTechnologyRelations1690810778563 extends CreateTableFkMigration implements MigrationInterface, SingleTableMigration {
-  public readonly tableName: string = "project_technology";
+export class CreateTechnologyRelations1690810778500 extends CreateTableFkMigration implements MigrationInterface, SingleTableMigration {
+  public readonly tableName: string = "technology";
 
   public readonly migrations: TableForeignKey[] = [
     new TableForeignKey({
-      columnNames: ["technology_id"],
-      referencedTableName: "technology",
+      columnNames: ["name_id"],
+      referencedTableName: "translation",
       referencedColumnNames: ["id"],
     }),
     new TableForeignKey({
-      columnNames: ["usage_description_id"],
+      columnNames: ["description_id"],
       referencedTableName: "translation",
       referencedColumnNames: ["id"],
     }),

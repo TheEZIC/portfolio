@@ -17,8 +17,13 @@ export class CreateProjectTechnologyTable1690748036760 extends CreateTableMigrat
           generationStrategy: "increment",
         },
         {
-          name: "usage_description",
-          type: "text",
+          name: "technology_id",
+          type: "integer",
+          isNullable: false,
+        },
+        {
+          name: "usage_description_id",
+          type: "integer",
           isNullable: false,
         },
       ],

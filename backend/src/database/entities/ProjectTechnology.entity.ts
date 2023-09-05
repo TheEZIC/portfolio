@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { TechnologyEntity } from "@database/entities";
+import { TranslationEntity } from "@database/entities/Translation.entity";
 
 @Entity({
   name: "project_technology",
@@ -9,11 +10,14 @@ export class ProjectTechnologyEntity {
   id: number;
 
   @Column({
-    name: "usage_description",
+    name: "usage_description_id",
     type: "text",
-    nullable: true,
+    nullable: false,
   })
-  usageDescription?: string;
+  @ManyToOne(() => TranslationEntity, {
+    cascade: true,
+  })
+  usageDescription: TranslationEntity;
 
   @Column({
     type: "integer",

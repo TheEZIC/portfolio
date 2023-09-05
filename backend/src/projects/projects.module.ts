@@ -3,6 +3,7 @@ import { ProjectsService } from "./projects.service";
 import { ProjectsController } from "./projects.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ProjectEntity, ProjectTechnologyEntity, TechnologyEntity } from "@database/entities";
+import { TranslationEntity } from "@database/entities/Translation.entity";
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { ProjectEntity, ProjectTechnologyEntity, TechnologyEntity } from "@datab
       ProjectEntity,
       TechnologyEntity,
       ProjectTechnologyEntity,
+      TranslationEntity,
     ])
   ],
   providers: [ProjectsService],

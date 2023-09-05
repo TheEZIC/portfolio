@@ -3,7 +3,7 @@ import { CreateManyToManyTableMigration } from "@database/migrations/abstracts/C
 import { SingleTableMigration } from "@database/migrations/types";
 
 export class CreateAboutToTechnologyTable1690809893116 extends CreateManyToManyTableMigration implements MigrationInterface, SingleTableMigration {
-  public readonly tableName: string = "about_to_project";
+  public readonly tableName: string = "about_to_technology";
 
   public readonly table1RefName: string = "about";
   public readonly column1RefName: string = "about_id";

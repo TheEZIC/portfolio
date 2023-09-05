@@ -17,13 +17,13 @@ export class CreateProjectTable1690748212784 extends CreateTableMigration implem
           generationStrategy: "increment",
         },
         {
-          name: "name",
-          type: "text",
+          name: "name_id",
+          type: "integer",
           isNullable: false,
         },
         {
-          name: "description",
-          type: "text",
+          name: "description_id",
+          type: "integer",
           isNullable: false,
         },
       ],

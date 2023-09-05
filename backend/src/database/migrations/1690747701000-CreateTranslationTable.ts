@@ -1,9 +1,9 @@
-import { MigrationInterface, QueryRunner, Table} from "typeorm"
+import { MigrationInterface, QueryRunner, Table } from "typeorm"
 import { CreateTableMigration } from "./abstracts/CreateTableMigration";
 import { SingleTableMigration } from "./types";
 
-export class CreateTechnologyTable1690747701020 extends CreateTableMigration implements MigrationInterface, SingleTableMigration {
-  public readonly tableName: string = "technology";
+export class CreateTranslationTable1690747701000 extends CreateTableMigration implements MigrationInterface, SingleTableMigration {
+  public readonly tableName: string = "translation";
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({
@@ -17,25 +17,14 @@ export class CreateTechnologyTable1690747701020 extends CreateTableMigration imp
           generationStrategy: "increment",
         },
         {
-          name: "name_id",
-          type: "integer",
-          isNullable: false,
-        },
-        {
-          name: "description_id",
-          type: "integer",
-          isNullable: false,
-        },
-        {
-          name: "icon",
+          name: "ru",
           type: "text",
           isNullable: true,
         },
         {
-          name: "main",
-          type: "boolean",
+          name: "en",
+          type: "text",
           isNullable: true,
-          default: true,
         },
       ],
     }));

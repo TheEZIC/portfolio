@@ -2,8 +2,8 @@ import { Module } from "@nestjs/common";
 import { AboutController } from "./about.controller";
 import { AboutService } from "./about.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AboutEntity, ProjectTechnologyEntity, TechnologyEntity } from "@database/entities";
-
+import { AboutEntity, AboutToTechnology, ProjectTechnologyEntity, TechnologyEntity } from "@database/entities";
+import { TranslationEntity } from "@database/entities/Translation.entity";
 
 @Module({
   imports: [
@@ -11,6 +11,8 @@ import { AboutEntity, ProjectTechnologyEntity, TechnologyEntity } from "@databas
       AboutEntity,
       TechnologyEntity,
       ProjectTechnologyEntity,
+      AboutToTechnology,
+      TranslationEntity,
     ])
   ],
   controllers: [AboutController],
