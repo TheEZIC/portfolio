@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ProjectTechnologyEntity } from "@database/entities/ProjectTechnology.entity";
 import { TranslationEntity } from "@database/entities/Translation.entity";
 
@@ -14,8 +14,10 @@ export class ProjectEntity {
     type: "integer",
     nullable: false,
   })
+  @JoinColumn({ name: "name_id" })
   @ManyToOne(() => TranslationEntity, {
     cascade: true,
+    eager: true,
   })
   name: TranslationEntity;
 
@@ -24,8 +26,10 @@ export class ProjectEntity {
     type: "integer",
     nullable: false,
   })
+  @JoinColumn({ name: "description_id" })
   @ManyToOne(() => TranslationEntity, {
     cascade: true,
+    eager: true,
   })
   description: string;
 

@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { TechnologyEntity } from "@database/entities";
 import { TranslationEntity } from "@database/entities/Translation.entity";
 
@@ -14,8 +14,10 @@ export class ProjectTechnologyEntity {
     type: "text",
     nullable: false,
   })
+  @JoinColumn({ name: "usage_description_id" })
   @ManyToOne(() => TranslationEntity, {
     cascade: true,
+    eager: true,
   })
   usageDescription: TranslationEntity;
 
@@ -24,6 +26,7 @@ export class ProjectTechnologyEntity {
     name: "technology_id",
     nullable: false,
   })
+  @JoinColumn({ name: "technology_id" })
   @ManyToOne(() => TechnologyEntity, (technology) => technology.projectTechnologies)
   base: TechnologyEntity;
 }
