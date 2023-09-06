@@ -9,11 +9,6 @@ export class ProjectTechnologyEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    name: "usage_description_id",
-    type: "text",
-    nullable: false,
-  })
   @JoinColumn({ name: "usage_description_id" })
   @ManyToOne(() => TranslationEntity, {
     cascade: true,
@@ -21,11 +16,6 @@ export class ProjectTechnologyEntity {
   })
   usageDescription: TranslationEntity;
 
-  @Column({
-    type: "integer",
-    name: "technology_id",
-    nullable: false,
-  })
   @JoinColumn({ name: "technology_id" })
   @ManyToOne(() => TechnologyEntity, (technology) => technology.projectTechnologies)
   base: TechnologyEntity;

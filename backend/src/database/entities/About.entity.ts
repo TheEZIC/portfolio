@@ -9,11 +9,6 @@ export class AboutEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    name: "title_id",
-    type: "integer",
-    nullable: false,
-  })
   @JoinColumn({ name: "title_id" })
   @ManyToOne(() => TranslationEntity, {
     cascade: true,
@@ -21,11 +16,6 @@ export class AboutEntity {
   })
   title: TranslationEntity;
 
-  @Column({
-    name: "text_id",
-    type: "integer",
-    nullable: false,
-  })
   @JoinColumn({ name: "text_id" })
   @ManyToOne(() => TranslationEntity, {
     cascade: true,
