@@ -3,10 +3,11 @@ FROM node:alpine
 WORKDIR /usr/frontend
 
 COPY ../../frontend/package*.json ./
+COPY ../../frontend/yarn.lock ./
 
-RUN yarn start
+RUN yarn install
 
-ENV BUILD_STANDALONE true
+ENV DEV false
 
 COPY ../../frontend ./
 

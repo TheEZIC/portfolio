@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: process.env.BUILD_STANDALONE === "true" ? "standalone" : undefined,
+  output: process.env.DEV === "true" ? "standalone" : undefined,
   images: {
     remotePatterns: [
       {
@@ -12,6 +12,16 @@ const nextConfig = {
         hostname: "**",
       },
     ],
+  },
+  webpackDevMiddleware: (config) => {
+    if (process.env.DEV === "true") {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+      };
+    }
+
+    return config;
   },
 }
 

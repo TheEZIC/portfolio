@@ -3,11 +3,12 @@ FROM node:alpine
 WORKDIR /usr/backend
 
 COPY ../../backend/package*.json ./
+COPY ../../backend/yarn.lock ./
 
 RUN yarn install
 
 COPY ../../backend ./
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD yarn build && yarn start:prod
+CMD yarn run build && yarn run migration:run && yarn run start:prod

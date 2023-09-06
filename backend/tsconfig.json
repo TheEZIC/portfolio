@@ -18,8 +18,22 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@database/*": ["./src/database/*"],
-      "@about/*": ["./src/about/*"]
+      "@database/*": [
+        "./src/database/*"
+      ],
+      "@about/*": [
+        "./src/about/*"
+      ]
     }
+  },
+  "watchOptions": {
+    "watchFile": "priorityPollingInterval",
+    "watchDirectory": "dynamicprioritypolling",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": [
+      "**/node_modules",
+      "dist"
+    ]
   }
 }

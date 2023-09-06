@@ -15,12 +15,16 @@ services:
 
   backend:
     container_name: dev-portfolio-back
-    stdin_open: true
+    restart: on-failure
     build:
       context: .
       dockerfile: dockerfiles/development/backend.dockerfile
+    ports:
+      - 80:80
+      - 9229:9229
     volumes:
       - ./backend:/usr/backend
+      - /usr/backend/node_modules
     networks:
       - portfolio
     env_file:
@@ -30,10 +34,12 @@ services:
 
   frontend:
     container_name: dev-portfolio-front
-    stdin_open: true
+    restart: on-failure
     build:
       context: .
       dockerfile: dockerfiles/development/frontend.dockerfile
+    ports:
+      - 3000:3000
     volumes:
       - ./frontend:/usr/frontend
     networks:
@@ -42,21 +48,6 @@ services:
       - ./frontend/.env
     depends_on:
       - psql
-
-  nginx:
-    container_name: dev-portfolio-nginx
-    image: nginx:stable
-    restart: unless-stopped
-    ports:
-      - 80:80
-    volumes:
-      - ./data/frontend:/var/www/html
-      - ./data/nginx.development:/etc/nginx/conf.d/
-    networks:
-      - portfolio
-    depends_on:
-      - backend
-      - frontend
 
 networks:
   portfolio:
